@@ -1,39 +1,57 @@
+let paintx = []
+let painty = []
 let paintR = 0
 let paintB = 0
 let paintG = 0
 
+
+let brushsize = 7
+//Images
 let fox;
 let easel;
-
+let bookshelf;
+let windowsGIF;
+let plant;
+//arrays
+let randname;
+let dumnum = [12,38,46,59,63,70]
+let words = ['SALE','Sold','No Sale','Broke','Hungery']
 
 function preload(){
   fox = loadImage("Images/PainterFox.png");
   easel = loadImage("Images/PixelEasel.png");
+  bookshelf = loadImage("Images/bookshelf.png")
+  plant = loadImage("Images/Plant.png")
+  windowsGIF = createImg("Images/windows.gif")
   //Gif inputs
-  room = createImg("Images/R.gif")
+
 }
 
 function setup() {
   //put set up code here to run once
   createCanvas(windowWidth,windowHeight);
-
   background(random(230), random(204), random(165));
-  room.position(800,1200)
 //change rect x&y to center
   rectMode(CENTER)
   imageMode(CENTER)
   stroke(168, 175, 186)
   strokeWeight(7)
   fill(255,255,255)
-  rect(window.innerWidth,window.innerHeight)
-  //noCursor
-}
+  rect(window.innerWidth,window.innerHeight);
+  // noCursor()
+  randnames=int(random(words.length));
 
+}
+print(randnames)
 
 function draw() {
-  // put drawing code here to run in a loop
-
-
+//   put drawing code here to run in a loop
+// for(i=0; i < dumnum.length; i++){
+//   print(dumnum[i]);
+//   fill(random(255),random(255),random(255));
+//   rect(random(windowWidth),random(windowHeight),dumnum[i],dumnum[i])
+// }
+text(words[randnames],200,300)
 //Styles for ellipse
 fill(222,142,142);
 stroke(random(250),random(255),500)
@@ -42,27 +60,28 @@ strokeWeight(5)
 
 //apartment styles
 stroke((255),(255),(255))
-rect(10,30,1000,1500)
+rect(10,30,1000,1600)
 
 //color controls
 
 
 //painting controls
 if (mouseIsPressed){
-  strokeWeight(7)
+  strokeWeight(brushsize)
   stroke(paintR,paintB,paintG)
-  point(mouseX,mouseY)
+  line(mouseX,mouseY,pmouseX,pmouseY)
 }
 
+//Images
+windowsGIF.position(60,150,300,300)
+image(bookshelf,200,500)
+image(easel,300,570,250,450);
+image(fox,150,630)
+image(plant,240,680)
 
 
-//Styles for lines
-
-//Styles for Images
-
-image(easel,300,470,250,450);
-image(fox,150,530)
 //Gif styles
+text(words[randnames],100,50)
 }
 //color picker
 function keyPressed(){
@@ -131,6 +150,23 @@ function keyPressed(){
     paintR = 0
     paintB = 0
     paintG = 0
+  }
+  //clear sketch
+  if(key=='b' || key=='B'){
+    background(random(230), random(204), random(165))
+  }
+  //strokeWeight
+  if(key==']'){
+    brushsize = brushsize + 1
+  }
+
+  if(key=='['){
+    brushsize = brushsize - 1
+  }
+
+  //saveSketch
+  if(key=='s' || key=='S'){
+    save('drawing.png')
   }
 }
 
