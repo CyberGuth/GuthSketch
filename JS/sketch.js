@@ -45,13 +45,14 @@ function setup() {
 print(randnames)
 
 function draw() {
+
 //   put drawing code here to run in a loop
 // for(i=0; i < dumnum.length; i++){
 //   print(dumnum[i]);
 //   fill(random(255),random(255),random(255));
 //   rect(random(windowWidth),random(windowHeight),dumnum[i],dumnum[i])
 // }
-text(words[randnames],200,300)
+text(words[randnames],100,300)
 //Styles for ellipse
 fill(222,142,142);
 stroke(random(250),random(255),500)
@@ -63,10 +64,16 @@ stroke((255),(255),(255))
 rect(10,30,1000,1600)
 
 //color controls
-
+strokeWeight(0)
+fill(243, 245, 118)
+textSize(20)
+text("~ - 0: change color",100,70)
+text("B: change background / clear",100,100)
+text("[ ]: change brush stroke weight",100,130)
 
 //painting controls
 if (mouseIsPressed){
+
   strokeWeight(brushsize)
   stroke(paintR,paintB,paintG)
   line(mouseX,mouseY,pmouseX,pmouseY)
@@ -81,7 +88,7 @@ image(plant,240,680)
 
 
 //Gif styles
-text(words[randnames],100,50)
+text(words[randnames],100,20)
 }
 //color picker
 function keyPressed(){
@@ -146,7 +153,7 @@ function keyPressed(){
     paintG = 255
   }
   //black
-  if(key == '`'){
+  if(key == '`' || key =='~'){
     paintR = 0
     paintB = 0
     paintG = 0
