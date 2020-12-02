@@ -15,7 +15,7 @@ let plant;
 //arrays
 let randname;
 let dumnum = [12,38,46,59,63,70]
-let words = ['SALE','Sold','No Sale','Broke','Hungery']
+let words = ['SALE','Sold','No Sale','Broke','Hungry']
 
 function preload(){
   fox = loadImage("Images/PainterFox.png");
