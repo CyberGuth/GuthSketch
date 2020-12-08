@@ -8,9 +8,10 @@ let paintG = 0
 let brushsize = 7
 //Images
 let fox;
+let tile;
 let easel;
 let pigman;
-let windowsGIF;
+let foxhole;
 let plant;
 //arrays
 let randname;
@@ -37,6 +38,8 @@ let sellSceneBoolean = false;
 let bookshelfAnimX = 0;
 let bookshelfSpeed = 2;
 
+
+
 function preload(){
   //load and position your images here and
   //hide the ones you want to show in a later level.
@@ -44,19 +47,23 @@ function preload(){
   //so it's not drawn on the canvas.
   //images will be stacked on top of one another like layers,
   //so windowsGIF is the bottom layer and plant is top.
-  windowsGIF = createImg("Images/windows.gif")
-  windowsGIF.addClass('windows');
-  windowsGIF.position(60,150);
 
+  tile = createImg("Images/Tile.png")
+  tile.addClass('tile')
+  tile.position(0,520)
+
+  foxhole = createImg("Images/Foxhole3.png")
+  foxhole.addClass('foxhole');
+  foxhole.position(0,0);
 
   easel = createImg("Images/PixelEasel.png");
-  easel.position(150, 250);
+  easel.position(120, 340);
   //I added a class here to adjust the scale using css (see the index file for styles in the head)
   //you can do this with any of these html objects, like text
   easel.addClass("easel");
 
   fox = createImg("Images/PainterFox.png")
-  fox.position(30,350);
+  fox.position(10,400);
 
   plant = createImg("Images/Plant.png");
   plant.position(-200, 400)
@@ -74,8 +81,8 @@ function setup() {
   //canvas is now only 600x600 and positioned to the left.
   //when you save an image, it will now only be this 600x600 drawing
   //and not the entire scene.
-  canvas = createCanvas(600,600);
-  canvas.position(windowWidth/2, 100);
+  canvas = createCanvas(500,500);
+  canvas.position(windowWidth/2 + 150, 10);
 
   background(random(230), random(204), random(165));
 
@@ -90,17 +97,17 @@ function setup() {
   //you can easily style these using CSS in the index head
   //by styling the p tag.
   artStatus = createP(words[randnames]);
-  artStatus.position(100,0);
+  artStatus.position(10,0);
   instructions1 = createP('~ - 0: change color');
-  instructions1.position(100,40);
+  instructions1.position(10,20);
   instructions2 = createP('B: change background / clear');
-  instructions2.position(100,70);
+  instructions2.position(10,40);
   instructions3 = createP('[ ]: change brush stroke weight');
-  instructions3.position(100,100);
+  instructions3.position(10,80);
 
   //create the button to change scenes. you can style the button using CSS in the index head
   changeSceneButton = createButton('Finish Painting');
-  changeSceneButton.position(450, 600);
+  changeSceneButton.position(850, 600);
   //this mouse pressed event will trigger the sell scene.
   //if you want a different event to trigger the function,
   //you can use a conditional statement to trigger.
@@ -116,10 +123,11 @@ function sellPainting(){
 
   //hiding and showing things
   changeSceneButton.hide();
-  windowsGIF.hide();
+  foxhole.hide();
   easel.hide();
   pigman.show();
   plant.show();
+
 
   //you can hide the text from the previous level, or update it with new text.
   //I just updated 1 of them here, this will update on the screen.
