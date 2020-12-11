@@ -12,11 +12,16 @@ let tile;
 let easel;
 let pigman;
 let foxhole;
-let plant;
+let bed;
+let bodega;
+let street;
+let nycItems;
 //arrays
 let randname;
 let dumnum = [12,38,46,59,63,70]
 let words = ['SALE','Sold','No Sale','Broke','Hungry']
+
+
 
 
 //NEW VARIABLES------------------------------------------------------------------/
@@ -29,6 +34,7 @@ let artStatus;
 let instructions1;
 let instructions2;
 let instructions3;
+let instructions4;
 
 //button to change scene
 let changeSceneButton;
@@ -36,7 +42,7 @@ let changeSceneButton;
 //second scene variables
 let sellSceneBoolean = false;
 let bookshelfAnimX = 0;
-let bookshelfSpeed = 2;
+let bookshelfSpeed = 10;
 
 
 
@@ -48,26 +54,42 @@ function preload(){
   //images will be stacked on top of one another like layers,
   //so windowsGIF is the bottom layer and plant is top.
 
+
   tile = createImg("Images/Tile.png")
   tile.addClass('tile')
   tile.position(0,520)
 
-  foxhole = createImg("Images/Foxhole3.png")
-  foxhole.addClass('foxhole');
+  foxhole = createImg("Images/Foxhole.png")
+  foxhole.addClass("foxhole");
   foxhole.position(0,0);
 
+  bed = createImg("Images/Bed.png")
+  bed.addClass("bed")
+  bed.position(600,560)
+
   easel = createImg("Images/PixelEasel.png");
-  easel.position(120, 340);
+  easel.position(240, 300);
   //I added a class here to adjust the scale using css (see the index file for styles in the head)
   //you can do this with any of these html objects, like text
   easel.addClass("easel");
 
-  fox = createImg("Images/PainterFox.png")
-  fox.position(10,400);
+  bodega = createImg("Images/Bodega.png");
+  bodega.position(0,0)
+  bodega.addClass("bodega");
+  bodega.hide();
 
-  plant = createImg("Images/Plant.png");
-  plant.position(-200, 400)
-  plant.hide();
+  street = createImg("Images/Street.png");
+  street.position(0,580)
+  street.addClass("street");
+  street.hide();
+
+  nycItems = createImg("Images/NYCitems.png");
+  nycItems.position(350,150);
+  nycItems.addClass("nycItems");
+  nycItems.hide();
+
+  fox = createImg("Images/PainterFox.png")
+  fox.position(100,380);
 
   pigman = createImg("Images/PigMan.png")
   pigman.position(0, 200);
@@ -98,16 +120,17 @@ function setup() {
   //by styling the p tag.
   artStatus = createP(words[randnames]);
   artStatus.position(10,0);
-  instructions1 = createP('~ - 0: change color');
+  instructions1 = createP('~ - 0: Change color');
   instructions1.position(10,20);
-  instructions2 = createP('B: change background / clear');
+  instructions2 = createP('B: Change background / Clear');
   instructions2.position(10,40);
-  instructions3 = createP('[ ]: change brush stroke weight');
+  instructions3 = createP('[ ]: Change brush stroke weight');
   instructions3.position(10,80);
-
+  instructions4 = createP('S: Save image')
+  instructions4.position(10,60);
   //create the button to change scenes. you can style the button using CSS in the index head
   changeSceneButton = createButton('Finish Painting');
-  changeSceneButton.position(850, 600);
+  changeSceneButton.position(630, 30);
   //this mouse pressed event will trigger the sell scene.
   //if you want a different event to trigger the function,
   //you can use a conditional statement to trigger.
@@ -123,11 +146,15 @@ function sellPainting(){
 
   //hiding and showing things
   changeSceneButton.hide();
+  tile.hide();
   foxhole.hide();
   easel.hide();
   pigman.show();
-  plant.show();
-
+  bodega.show();
+  street.show();
+  nycItems.show();
+  fox.position(120,270)
+  bed.hide();
 
   //you can hide the text from the previous level, or update it with new text.
   //I just updated 1 of them here, this will update on the screen.
@@ -135,7 +162,7 @@ function sellPainting(){
 
   //animate the bookshelf image
   bookshelfAnimX = bookshelfAnimX + bookshelfSpeed;
-  pigman.position(bookshelfAnimX, 400);
+  pigman.position(bookshelfAnimX, 350);
 
   //reset bookshelf image position when it goes off edge of screen
   if(bookshelfAnimX > windowWidth){
@@ -241,19 +268,20 @@ function keyPressed(){
   }
   //strokeWeight
   if(key==']'){
-    brushsize = brushsize + 1
+    brushsize = brushsize + 2
   }
 
   if(key=='['){
-    brushsize = brushsize - 1
+    brushsize = brushsize - 2
   }
 
   //saveSketch
   if(key=='s' || key=='S'){
     save('drawing.png')
   }
-}
 
+
+}
 function windowResized(){
   resizeCanvas(windowWidth,windowHeight)
 }
