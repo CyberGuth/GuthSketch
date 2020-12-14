@@ -440,11 +440,11 @@ function keyPressed(){
   }
   //strokeWeight
   if(key==']'){
-    brushsize = brushsize + 2
+    brushsize = brushsize + 10
   }
 
   if(key=='['){
-    brushsize = brushsize - 2
+    brushsize = brushsize - 10
   }
 
   //saveSketch
