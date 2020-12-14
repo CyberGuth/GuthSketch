@@ -343,7 +343,7 @@ function mouseReleased(){
     //right by 150px from center
     if(pigAnimX > canvasLeft && pigAnimX < canvasRight){
       if(antAnimX > canvasLeft && antAnimX < canvasRight){
-        hungerBarValue = hungerBarValue - 20
+        hungerBarValue = hungerBarValue - 100
       }else {
         hungerBarValue = hungerBarValue - 10
       }
@@ -352,7 +352,7 @@ function mouseReleased(){
       if(antAnimX > canvasLeft - 500 && antAnimX < canvasRight - 400){
       hungerBarValue = hungerBarValue - 10
     }else{
-      hungerBarValue = hungerBarValue + 100
+      hungerBarValue = hungerBarValue + 200
     }
 
 
