@@ -23,8 +23,8 @@ let anteater;
 let randname;
 let randprice;
 let dumnum = [12,38,46,59,63,70]
-let words = ['I want beer.','Need food.','$$$$$$$$ = food','Ah nuts broke again.','Hungry','I really want beer','art = food']
-let numbers = ['couple bucks','ten thousand','one thousand','eight dollars','to much','one zillion billion','shit','nothing','a whole bunch','wayyy to much','millions']
+let words = ['I want a beer.','Need food.','Its the poor artist that borrows','Ah nuts broke again.','Hungry','I really want a beer','art = food',]
+let numbers = ['a couple bucks','ten thousand dollars','one thousand dollars','eight dollars','to much','one zillion billion','shit','a whole bunch','wayyy to much','millions']
 let day = 1
 
 
