@@ -21,9 +21,10 @@ let nycItems;
 let anteater;
 //arrays
 let randname;
+let randprice;
 let dumnum = [12,38,46,59,63,70]
 let words = ['I want beer.','Need food.','$$$$$$$$ = food','Ah nuts broke again.','Hungry','I really want beer','art = food']
-
+let numbers = ['couple bucks','ten thousand','one thousand','eight dollars','to much','one zillion billion','shit','nothing','a whole bunch','wayyy to much','millions']
 let day = 1
 
 
@@ -34,6 +35,7 @@ let canvas;
 
 //text variables
 let artStatus;
+let artValue;
 let instructions1;
 let instructions2;
 let instructions3;
@@ -42,6 +44,8 @@ let instructions5;
 let instructions6;
 let instructions7;
 let instructions8;
+let instructions9;
+
 
 
 //button to change scene
@@ -145,6 +149,7 @@ function setup() {
 
 
   randnames=int(random(words.length));
+  randprice=int(random(numbers.length));
 
   //creating the html paragraph (p tags).
   //you can easily style these using CSS in the index head
@@ -170,6 +175,12 @@ function setup() {
   instructions8 = createP('HUNGER')
   instructions8.position(50,650)
   instructions8.hide();
+  instructions9 = createP('After Death Art Sold For:')
+  instructions9.position(460,200);
+  instructions9.hide();
+  artValue = createP(numbers[randprice]);
+  artValue.position(680,200);
+  artValue.hide();
 
   //create the button to change scenes. you can style the button using CSS in the index head
   changeSceneButton = createButton('Finish Painting');
@@ -268,7 +279,7 @@ function sellPainting(){
       instructions6.hide();
       instructions7.hide();
       instructions8.hide();
-      setup();
+
 
 
   }
@@ -290,6 +301,8 @@ function sellPainting(){
     instructions6.hide();
     instructions7.hide();
     instructions8.hide();
+    instructions9.show();
+    artValue.show();
 
   }
 
